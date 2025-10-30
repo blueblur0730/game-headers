@@ -11,10 +11,11 @@ struct TurnedZombieEntry_t {
     char m_szModel[260];                // 956
 };
 
-class CNMRiH_TurnedZombie_Watcher : public CBaseEntity, public IGameEventListener2 {
-public:
-    DECLARE_CLASS(CNMRiH_TurnedZombie_Watcher, CBaseEntity);
-
+// entity size 3552
+class CNMRiH_TurnedZombie_Watcher : public CBaseEntity, public IGameEventListener2 
+{
 private:
-    TurnedZombieEntry_t m_TurnedZombieEntry[9]; // entity size 3552
+                                                    // vptr, this + 0x394 / 916
+    bool m_bEventHooked;                            // this + 0x398 / 920
+    TurnedZombieEntry_t m_TurnedZombieEntry[9];     // this + 0x39C / 924
 };

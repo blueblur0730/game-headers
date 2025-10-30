@@ -44,3 +44,24 @@ class CNMRiH_ObjectiveManager : public CAutoGameSystemPerFrame
     EHANDLE m_hCurrentObjectiveBoundrayHandle;              // this + 0x78 / 120
     EHANDLE m_hExtractionEntityHandle;                      // this + 0x7C / 124
 };
+
+class CNMRiH_ObjectiveBoundary : public CBaseEntity     // entity size 1076
+{
+public:
+    DECLARE_CLASS(CNMRiH_ObjectiveBoundary, CBaseEntity);
+
+protected:
+    char m_szGlowEntityNames[40];    // this + 0x394 / 916, glow entity names, sendprop.
+    Color m_GlowEntityColors;         // this + 0x3BC / 956, glow entity colors, sendprop.
+
+    bool m_bActive;                     // this + 0x3E4 / 996, indicates whether the boundary is active or not, sendprop.
+    bool m_bBlip;                       // this + 0x3E5 / 997, unkown bool, sendprop.
+    int m_iID;                          // this + 0x3E8 / 1000, unique objective id of which this boundary belongs to.
+    const char *m_szName;               // this + 0x3EC / 1004, unique objective name of which this boundary belongs to.
+
+    CUtlVector<string_t> m_aUnkownVector; // this + 0x3F0 / 1008, unknown vector, size 12.
+    int m_iUnkownCount;                  // this + 0x3FC / 1020, unknown count.
+
+    COutputEvent m_OnStart;             // this + 0x404 / 1028, COutputEvent size 24.
+    COutputEvent m_OnFinish;            // this + 0x41C / 1052
+};
