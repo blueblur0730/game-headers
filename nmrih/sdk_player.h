@@ -30,6 +30,7 @@ struct SDKPlayerStateInfo
 	void ( CSDKPlayer::*pfnPreThink )();
 };
 
+// size 116.
 class CSDKPlayer : public CBaseMultiplayerPlayer, public ISDKPlayerAnimStateHelpers
 {
 public:
@@ -73,12 +74,12 @@ public:
     virtual void Event_Killed( const CTakeDamageInfo &info );
     virtual bool BecomeRagdollOnClient( const Vector &force ) { return true; };
     virtual void Weapon_Equip( CBaseCombatWeapon *pWeapon );
-    virtual int OnTakeDamage_Alive(const CTakeDamageInfo &info);
+    virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
     virtual void PostThink( void );
     virtual void CreateViewModel( int viewmodelindex = 0 );
     virtual void SetupVisibility( CBaseEntity *pViewEntity, unsigned char *pvs, int pvssize );
 	virtual bool WantsLagCompensationOnEntity( const CBasePlayer	*pPlayer, const CUserCmd *pCmd, const CBitVec<MAX_EDICTS> *pEntityTransmitBits ) const;
-	virtual void SharedSpawn();
+	virtual void SharedSpawn( void );
     virtual void InitialSpawn( void );
     virtual void PlayerDeathThink( void ) { };
     virtual void PreThink( void );
@@ -92,11 +93,11 @@ public:
     virtual bool ClientCommand( const CCommand &args );
     virtual bool ModeWantsSpectatorGUI( int iMode ) { return iMode - 1 > 1; }
     virtual CBaseEntity	*EntSelectSpawnPoint( void );
-    virtual void LeaveVehicle(const Vector &vecExitPoint = vec3_origin, const QAngle &vecExitAngles = vec3_angle) { CBasePlayer::LeaveVehicle(vecExitPoint, vecExitAngles); };
+    virtual void LeaveVehicle( const Vector &vecExitPoint = vec3_origin, const QAngle &vecExitAngles = vec3_angle ) { CBasePlayer::LeaveVehicle(vecExitPoint, vecExitAngles); };
     virtual void CreateRagdollEntity( void );
     virtual void CommitSuicide( bool bExplode = false, bool bForce = false );
     virtual int SpawnArmorValue( void ) const { return m_iSpawnArmorValue; }
-    virtual void GiveDefaultItems() { };
+    virtual void GiveDefaultItems( void ) { };
     virtual void SetSpawnArmorValue( int iValue ) { m_iSpawnArmorValue = iValue; }
     virtual bool CanAttack( void ); const { return true; }
     virtual int GetPlayerStance() { return IsSprinting() ? 2 : m_iStance /* Upper class variable */; };
@@ -113,7 +114,7 @@ public:
     void State_PreThink_WELCOME( void );
     SDKPlayerStateInfo *State_LookupInfo( SDKPlayerState nState );
 
-    virtual bool CanSprint() { return (!( m_Local.m_bDucked && !m_Local.m_bDucking ) && (GetWaterLevel() != 3) ); };
+    virtual bool CanSprint( void ) { return (!( m_Local.m_bDucked && !m_Local.m_bDucking ) && (GetWaterLevel() != 3) ); };
     virtual void InitSpeeds( void );
     virtual void ThrowActiveWeapon( void );
     virtual void SDKThrowWeapon( CWeaponSDKBase *pWeapon, Vector const& vecOrigin, QAngle const& vecAngle, float flScale );

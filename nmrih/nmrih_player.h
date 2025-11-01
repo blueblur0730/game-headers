@@ -3,6 +3,75 @@
 // entity size 5600.
 class CNMRiH_Player : public CSDKPlayer
 {
+public:
+	DECLARE_CLASS(CNMRiH_Player, CSDKPlayer);
+	DECLARE_SERVERCLASS();
+	DECLARE_PREDICTABLE();
+	DECLARE_DATADESC();
+
+    CNMRiH_Player();
+    ~CNMRiH_Player();
+
+public:
+    virtual void Spawn( void );
+    virtual void Precache( void );
+    virtual int	OnTakeDamage( const CTakeDamageInfo &info );
+    virtual void Event_Killed( const CTakeDamageInfo &info );
+	virtual int	GiveAmmo( int iCount, int iAmmoIndex, bool bSuppressSound = false );
+	virtual int	GiveAmmo( int iCount, const char *szName, bool bSuppressSound = false );
+    virtual	void Weapon_Drop( CBaseCombatWeapon *pWeapon, const Vector *pvecTarget /* = NULL */, const Vector *pVelocity /* = NULL */ );
+	virtual	bool Weapon_Switch( CBaseCombatWeapon *pWeapon, int viewmodelindex = 0 );
+    virtual	bool Weapon_CanSwitchTo( CBaseCombatWeapon *pWeapon );
+    virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
+    virtual void PostThink( void );
+    virtual void CureInfection( void );
+    virtual void BecomeInfected( void );
+    virtual void TakePills( void );
+    virtual void CreateViewModel( int viewmodelindex = 0 );
+    virtual void SharedSpawn( void );
+    virtual void InitialSpawn( void );
+    virtual void DeathSound( const CTakeDamageInfo &info );
+    virtual void OnEmitFootstepSound( const CSoundParameters& params, const Vector& vecOrigin, float fVolume );
+    virtual void CheatImpulseCommands( int iImpulse );
+    virtual bool BumpWeapon( CBaseCombatWeapon *pWeapon, bool b );
+    virtual bool IsWeaponVisible( void );
+    virtual CBaseEntity *GiveNamedItem( const char *pszName, int iSubType );
+    virtual void PlayerUse( void );
+    virtual void PickupObject( CBaseEntity *pObject, bool bLimitMassAndSize );
+    virtual void ResetScores( void );
+    virtual void CommitSuicide( bool bExplode = false, bool bForce = false );
+    virtual void TryIncreaseBloodiness( int iBlodiness );
+
+    virtual void State_Enter_ACTIVE( void );
+    virtual void State_PreThink_DEATH_ANIM( void );
+
+    virtual bool CanSprint( void );
+    virtual void InitSpeeds( void );
+
+    virtual bool IsNPC( void );
+    virtual bool IsPlayer( void );
+    virtual bool HasFlashlight( void ) const;
+    virtual bool HasWalkieTalkie( void ) const;
+    virtual void SetTalkingType( bool bType );
+    virtual bool IsTalkingLocal( void );
+    virtual bool IsTalkingWalkie( void );
+    virtual bool CanShove( void );
+    virtual bool CanWeakShove( void );
+    virtual void EnableSprint( bool bEnable );
+    virtual void Ammo_Drop( char const* pszAmmoName );
+    virtual int FInViewCone( Vector const &vecSpot, float fl, bool b );
+    virtual int DeathCount( void );
+    virtual void ResetDeathCount( void );
+    virtual int GetLastObserverMode( void );
+    virtual void ThrowAllWeapons( void );
+    virtual void ThrowAllAmmo( void );
+    virtual void SetStickyIronsight( bool bStickyIronSight );
+    virtual bool IsStickyIronsight( void );
+    virtual void OnGrabbedBegin( CBaseEntity* pGrabber);
+    virtual void OnGrabbedEnd( CBaseEntity* pGrabber, CBaseEntity const* pCauser );
+    virtual void SetHealth( int iHeath );
+    
+public:
     float m_flDeployTime;                // this + 0x132C / 4908, spawn timestamp? sendprop.
     float m_flThrowDropTimer;            // this + 0x1330 / 4912, a countdown timer as the cooldown for droping items, sendprop.
     int _carriedWeight;                  // this + 0x1334 / 4916, sendprop.
