@@ -35,7 +35,7 @@ class CNMRiH_Player : public CSDKPlayer
     float m_flVoiceCmdCooldown;          // this + 0x1378 / 4984, cooldown duration.
     float m_flNextAudibleReloadTime;     // this + 0x137C / 4988, see TE_AudibleReload(). used for this temp entity to play the reload sound.
     float m_flAudibleReloadCooldown;     // this + 0x1380 / 4992, see TE_AudibleReload(). use the value of 'sv_voice_cooldown'.
-    int m_iAtControlCount;               // this + 0x1384 / 4996, setting this > 1 will add the flag 'FL_ATCONTROLS' on the player. (Player can't move, but keeps key inputs for controlling another entity). 0 otherwise remove the flag.
+    int m_iAtControlCount;               // this + 0x1384 / 4996, setting this >= 1 will add the flag 'FL_ATCONTROLS' on the player. (Player can't move, but keeps key inputs for controlling another entity). 0 otherwise remove the flag.
     EHANDLE m_hGrabber;                  // this + 0x1388 / 5000, The zombie who is grabbing me.
     float m_flExractedFrozenTime;        // this + 0x138C / 5004, Time to frozen the player after extracted, 'sv_extract_pause' + gpGlobals->curtime.
     int m_iKills;                        // this + 0x1390 / 5008, Increamented by 1 from 'npc_killed' event. once reached the amount one respawn token required, this is reset to 0.

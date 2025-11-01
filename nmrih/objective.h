@@ -47,10 +47,6 @@ class CNMRiH_ObjectiveManager : public CAutoGameSystemPerFrame
 
 class CNMRiH_ObjectiveBoundary : public CBaseEntity     // entity size 1076
 {
-public:
-    DECLARE_CLASS(CNMRiH_ObjectiveBoundary, CBaseEntity);
-
-protected:
     char m_szGlowEntityNames[40];    // this + 0x394 / 916, glow entity names, sendprop.
     Color m_GlowEntityColors;         // this + 0x3BC / 956, glow entity colors, sendprop.
 
