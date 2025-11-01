@@ -14,6 +14,16 @@ struct TurnedZombieEntry_t {
 // entity size 3552
 class CNMRiH_TurnedZombie_Watcher : public CBaseEntity, public IGameEventListener2 
 {
+public:
+    DECLARE_CLASS(CNMRiH_TurnedZombie_Watcher, CBaseEntity);
+    DECLARE_DATADESC();
+
+    CNMRiH_TurnedZombie_Watcher();
+    ~CNMRiH_TurnedZombie_Watcher();
+    
+    virtual void FireGameEvent( IGameEvent *pEvent );
+
+public:
                                                     // vptr, this + 0x394 / 916
     bool m_bEventHooked;                            // this + 0x398 / 920
     TurnedZombieEntry_t m_TurnedZombieEntry[9];     // this + 0x39C / 924

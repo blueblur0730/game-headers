@@ -5,8 +5,14 @@
 #include "igamesystem.h"
 #include "baseentity.h"
 
-class CNMRiH_Objective                  // size 0x40 / 64
+// size 64.
+class CNMRiH_Objective
 {
+public:
+    CNMRiH_Objective();
+    ~CNMRiH_Objective();
+    
+public:
     int m_iID;                          // this
     const char *m_szName;               // this + 0x4
     const char *m_szDesc;               // this + 0x8
@@ -21,8 +27,19 @@ class CNMRiH_Objective                  // size 0x40 / 64
     HSCRIPT m_hScriptInstance;          // this + 0x3C / 60
 };
 
-class CNMRiH_ObjectiveManager : public CAutoGameSystemPerFrame
+// size 128.
+class CNMRiH_ObjectiveManager : public CAutoGameSystemPerFrame, public IGameEventListener2 
 {
+public:
+    virtual void LevelInitPostEntity( void );
+    virtual void LevelShutdownPostEntity( void );
+
+    CNMRiH_ObjectiveManager();
+    ~CNMRiH_ObjectiveManager();
+
+    virtual void FireGameEvent( IGameEvent *pEvent );
+
+public:
     char unknown[4];                                        // this + 0x10 / 16
     CUtlVector<CNMRiH_Objective *> m_aObjectiveVector;      // this + 0x14 / 20
     int m_iObjectivesCount;                                 // this + 0x20 / 32
@@ -45,8 +62,21 @@ class CNMRiH_ObjectiveManager : public CAutoGameSystemPerFrame
     EHANDLE m_hExtractionEntityHandle;                      // this + 0x7C / 124
 };
 
-class CNMRiH_ObjectiveBoundary : public CBaseEntity     // entity size 1076
+// entity size 1076
+class CNMRiH_ObjectiveBoundary : public CBaseEntity
 {
+public:
+    DECLARE_CLASS(CNMRiH_ObjectiveBoundary, CBaseEntity);
+	DECLARE_SERVERCLASS();
+	DECLARE_DATADESC();
+
+    CNMRiH_ObjectiveBoundary();
+    ~CNMRiH_ObjectiveBoundary();
+
+    virtual int UpdateTransmitState( void );
+    virtual void PostConstructor(const char *szClassname);
+
+public:
     char m_szGlowEntityNames[40];    // this + 0x394 / 916, glow entity names, sendprop.
     Color m_GlowEntityColors;         // this + 0x3BC / 956, glow entity colors, sendprop.
 
