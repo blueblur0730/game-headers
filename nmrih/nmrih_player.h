@@ -4,10 +4,10 @@
 class CNMRiH_Player : public CSDKPlayer
 {
 public:
-	DECLARE_CLASS(CNMRiH_Player, CSDKPlayer);
-	DECLARE_SERVERCLASS();
-	DECLARE_PREDICTABLE();
-	DECLARE_DATADESC();
+    DECLARE_CLASS(CNMRiH_Player, CSDKPlayer);
+    DECLARE_SERVERCLASS();
+    DECLARE_ENT_SCRIPTDESC();
+    DECLARE_DATADESC();
 
     CNMRiH_Player();
     ~CNMRiH_Player();
@@ -15,13 +15,13 @@ public:
 public:
     virtual void Spawn( void );
     virtual void Precache( void );
-    virtual int	OnTakeDamage( const CTakeDamageInfo &info );
+    virtual int OnTakeDamage( const CTakeDamageInfo &info );
     virtual void Event_Killed( const CTakeDamageInfo &info );
-	virtual int	GiveAmmo( int iCount, int iAmmoIndex, bool bSuppressSound = false );
-	virtual int	GiveAmmo( int iCount, const char *szName, bool bSuppressSound = false );
-    virtual	void Weapon_Drop( CBaseCombatWeapon *pWeapon, const Vector *pvecTarget /* = NULL */, const Vector *pVelocity /* = NULL */ );
-	virtual	bool Weapon_Switch( CBaseCombatWeapon *pWeapon, int viewmodelindex = 0 );
-    virtual	bool Weapon_CanSwitchTo( CBaseCombatWeapon *pWeapon );
+    virtual int GiveAmmo( int iCount, int iAmmoIndex, bool bSuppressSound = false );
+    virtual int GiveAmmo( int iCount, const char *szName, bool bSuppressSound = false );
+    virtual void Weapon_Drop( CBaseCombatWeapon *pWeapon, const Vector *pvecTarget /* = NULL */, const Vector *pVelocity /* = NULL */ );
+    virtual bool Weapon_Switch( CBaseCombatWeapon *pWeapon, int viewmodelindex = 0 );
+    virtual bool Weapon_CanSwitchTo( CBaseCombatWeapon *pWeapon );
     virtual int OnTakeDamage_Alive( const CTakeDamageInfo &info );
     virtual void PostThink( void );
     virtual void CureInfection( void );
