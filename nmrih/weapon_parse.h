@@ -6,6 +6,7 @@
 //=============================================================================//
 
 #include "shareddefs.h"
+#include "tier1/utldict.h"
 
 class IFileSystem;
 
@@ -99,6 +100,11 @@ const char *pWeaponSoundCategories[ NUM_SHOOT_SOUND_TYPES ] =
 #else
 extern const char *pWeaponSoundCategories[ NUM_SHOOT_SOUND_TYPES ];
 #endif
+
+static CUtlDict< FileWeaponInfo_t*, unsigned short > m_WeaponInfoDatabase;
+
+// FIXME, handle differently?
+static FileWeaponInfo_t gNullWeaponInfo;
 
 // size 1864.
 //-----------------------------------------------------------------------------
