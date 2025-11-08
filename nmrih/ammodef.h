@@ -55,7 +55,7 @@ class CAmmoDef
 {
 
 public:
-    Ammo_t m_AmmoType[MAX_AMMO_TYPES]; // this + 0x0 / 0, size = 1920.
+    Ammo_t m_AmmoType[MAX_AMMO_TYPES]; // this + 0x0 / 0, size = 32 * 60 = 1920.
     int m_nAmmoIndex;                  // this + 0x784 / 1924.
 
     Ammo_t *GetAmmoOfIndex(int nAmmoIndex);
