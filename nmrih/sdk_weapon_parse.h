@@ -12,8 +12,7 @@ public:
 	
 	virtual void Parse( ::KeyValues *pKeyValuesData, const char *szWeaponName );
 
-	bool unkwnon;					// this + 0x749 / 1865, unknown.
-	char m_szAnimExtension[16];		// this + 0x74C / 1868, string used to generate player animations with this weapon
+	char m_szAnimExtension[16];		// this + 0x749 / 1865, string used to generate player animations with this weapon
 	int m_iNumClips;				// this + 0x75C / 1884, number of clips in this weapon
 
 	// Parameters for FX_FireBullets:
@@ -24,7 +23,7 @@ public:
 	int     m_iHeadShotDamage;		// this + 0x770 / 1904, amount of damage to inflict on a headshot.
 	char    m_szMuzzleFlash[32];	// this + 0x774 / 1908, name of the muzzle flash effect.
 
-	bool	m_bUnknown;					// this + 0x793 / 1939.	maybe it is 'ITEM_FLAG_SKILLSHOTS'. used by pistols to one shots in head.
+	char 	padding1;					// this + 0x793 / 1939.
 	float 	m_flQuickAttackStaminaCost;	// this + 0x794 / 1940, cost of quick attack in stamina.
 	int		m_iHafAmmoThreshold;		// this + 0x798 / 1944, ammo threshold for half.
 	int 	m_iOverHalfAmmoThreshold;	// this + 0x79C / 1948, ammo threshold for more than over a half.
@@ -34,7 +33,7 @@ public:
 	float 	m_flMuzzleSmokeTime;		// this + 0x7AC / 1964, lifetime of muzzle smoke puffs.
 	char 	m_szSwingTrailParticleName[32];	// this + 0x7B0 / 1968, name of the melee swing trail particle effect.
 
-	bool 	m_bUnknown2;				// this + 0x7CF / 1999.	maybe it is 'ITEM_FLAG_PENETRATION'. used by heavy power guns to one shot double kills.
+	char 	padding2;					// this + 0x7CF / 1999.
 	bool 	m_bAllowSuicide;			// this + 0x7D0 / 2000, whether or not this weapon can be used to commit suicide.
 	char 	m_szSuicideParticle[32];	// this + 0x7D1 / 2001, name of the suicide particle effect.
 	bool 	m_bUnknown3;				// this + 0x7F0 / 2032. maybe it is 'MeleeWeapon', mark this weapon as melee weapon.
