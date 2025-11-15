@@ -36,7 +36,7 @@ public:
 	char 	padding2;					// this + 0x7CF / 1999.
 	bool 	m_bAllowSuicide;			// this + 0x7D0 / 2000, whether or not this weapon can be used to commit suicide.
 	char 	m_szSuicideParticle[32];	// this + 0x7D1 / 2001, name of the suicide particle effect.
-	bool 	m_bUnknown3;				// this + 0x7F0 / 2032. maybe it is 'MeleeWeapon', mark this weapon as melee weapon.
+	char 	padding3;					// this + 0x7F0 / 2032.
 	int 	m_iDamageType;				// this + 0x7F4 / 2036. the damage type of this eapon. note: in weapon scripts, this is a string key. it get converted to number inside the game.
 	float 	m_flFOV;					// this + 0x7F8 / 2040. see CWeaponSDKBase::GetWeaponFOV().
 };
