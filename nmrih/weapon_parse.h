@@ -53,6 +53,21 @@ int GetWeaponSoundFromString( const char *pszString );
 class CHudTexture;
 class KeyValues;
 
+// Weapon flags, from shareddefs.h
+// -----------------------------------------
+//	Flags - NOTE: KEEP g_ItemFlags IN WEAPON_PARSE.CPP UPDATED WITH THESE
+// -----------------------------------------
+#define ITEM_FLAG_SELECTONEMPTY		(1<<0)
+#define ITEM_FLAG_NOAUTORELOAD		(1<<1)
+#define ITEM_FLAG_LIMITINWORLD		(1<<3)
+#define ITEM_FLAG_EXHAUSTIBLE		(1<<4)	// A player can totally exhaust their ammo supply and lose this weapon
+#define ITEM_FLAG_DOHITLOCATIONDMG	(1<<5)	// This weapon take hit location into account when applying damage
+#define ITEM_FLAG_NOAMMOPICKUPS		(1<<6)	// Don't draw ammo pickup sprites/sounds when ammo is received
+#define ITEM_FLAG_NOITEMPICKUP		(1<<7)	// Don't draw weapon pickup when this weapon is picked up by the player
+#define ITEM_FLAG_SKILLSHOT			(1<<8)	// This weapon can perform a skillshot, charginf when aim downsight.
+#define ITEM_FLAG_PENETRATION		(1<<9)	// This weapon can penetrate multiple enemies at once.
+// NOTE: KEEP g_ItemFlags IN WEAPON_PARSE.CPP UPDATED WITH THESE
+
 // Item flags that we parse out of the file.
 typedef struct
 {
@@ -64,12 +79,13 @@ itemFlags_t g_ItemFlags[8] =
 {
 	{ "ITEM_FLAG_SELECTONEMPTY",	ITEM_FLAG_SELECTONEMPTY },
 	{ "ITEM_FLAG_NOAUTORELOAD",		ITEM_FLAG_NOAUTORELOAD },
-	{ "ITEM_FLAG_NOAUTOSWITCHEMPTY", ITEM_FLAG_NOAUTOSWITCHEMPTY },
 	{ "ITEM_FLAG_LIMITINWORLD",		ITEM_FLAG_LIMITINWORLD },
 	{ "ITEM_FLAG_EXHAUSTIBLE",		ITEM_FLAG_EXHAUSTIBLE },
 	{ "ITEM_FLAG_DOHITLOCATIONDMG", ITEM_FLAG_DOHITLOCATIONDMG },
 	{ "ITEM_FLAG_NOAMMOPICKUPS",	ITEM_FLAG_NOAMMOPICKUPS },
-	{ "ITEM_FLAG_NOITEMPICKUP",		ITEM_FLAG_NOITEMPICKUP }
+	{ "ITEM_FLAG_NOITEMPICKUP",		ITEM_FLAG_NOITEMPICKUP },
+	{ "ITEM_FLAG_SKILLSHOT",		ITEM_FLAG_SKILLSHOT },
+	{ "ITEM_FLAG_PENETRATION",		ITEM_FLAG_PENETRATION }
 };
 #else
 extern itemFlags_t g_ItemFlags[8];
